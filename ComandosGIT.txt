@@ -1,7 +1,7 @@
 ﻿CLONAR EL REPOSITORIO
 ----------------------------------------------
 
-git clone https://github.com/gcoronelc/UNI-FIIS-2026-1-SI401-V.git
+git clone https://github.com/gcoronelc/UNI-FIIS-2026-1-SW609-U.git
 
 
 

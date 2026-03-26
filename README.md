@@ -20,13 +20,11 @@
 
 ## Delegado
 
-- Nombre: 
-- Correo: 
+- Nombre: Rafael Olivos Gallardo
 
 ## Subdelegado
 
-- Nombre: 
-- Correo: 
+- Nombre: David Luza Ccorimanya
 
 # RECURSOS UTILES
 
