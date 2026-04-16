@@ -1,0 +1,24 @@
+Crea la sentencia para crear un usuario con las siguientes características:
+1. Su nombre de usuario y clave tengan el siguiente patrón: ABBBBBB; donde A es la primera letra de su primer nombre y BBBBBB corresponda a su apellido paterno.
+2. Pueda iniciar sesión.
+3. Tenga permisos para crear tablas y vistas.
+4. Tenga cuota ilimitada en el tablespace USERS.
+5. USERS sea el tablespace por defecto.
+6. TEMP sea el tablespace temporal.
+
+SOLUCION
+
+-- USER SQL
+CREATE USER "ECORONEL" IDENTIFIED BY "ecoronel"  
+DEFAULT TABLESPACE "USERS"
+TEMPORARY TABLESPACE "TEMP";
+
+-- QUOTAS
+ALTER USER "ECORONEL" QUOTA UNLIMITED ON "USERS";
+
+-- ROLES
+GRANT "CONNECT" TO "ECORONEL" ;
+GRANT "RESOURCE" TO "ECORONEL" ;
+
+
+
