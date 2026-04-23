@@ -1,0 +1,46 @@
+Por que falla:
+
+SQL> conn / as sysoper
+ERROR:
+ORA-01017: nombre de usuario/contraseña no validos; conexi¾n denegada
+
+
+Por que el error:
+
+SQL> conn hr/hr
+Conectado.
+SQL> describe dba_tables
+ERROR:
+ORA-04043: el objeto "SYS"."DBA_TABLES" no existe
+
+
+Crear un usuario de nombre ALMACEN con cuota ilimitada en el tablespace users, y tablespace por defecto users.
+
+CREATE USER almacen
+    IDENTIFIED BY almacen
+    DEFAULT TABLESPACE users
+    TEMPORARY TABLESPACE temp
+    QUOTA UNLIMITED ON users;
+
+
+Analiza y explica el siguiente error desde una perspectiva técnica de un ingeniero de la UNI:
+
+SQL> conn / as sysdba
+Conectado.
+SQL> CREATE USER almacen
+  2      IDENTIFIED BY almacen
+  3      DEFAULT TABLESPACE users
+  4      TEMPORARY TABLESPACE temp
+  5      QUOTA UNLIMITED ON users;
+
+Usuario creado.
+
+SQL> conn almacen/almacen
+ERROR:
+ORA-01045: el usuario ALMACEN no tiene privilegio CREATE SESSION; conexi¾n
+denegada
+
+
+Advertencia: íYa no estß conectado a ORACLE!
+
+
