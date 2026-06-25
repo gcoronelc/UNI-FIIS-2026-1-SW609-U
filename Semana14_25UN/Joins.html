@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Segoe UI', sans-serif; background: #0f1b2d; padding: 30px; }
+.title { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.title span { color: #e87c2b; }
+.subtitle { font-size: 12px; color: #8a9bb0; margin-bottom: 24px; }
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: #1a2d45; }
+thead th { padding: 11px 14px; font-size: 12px; font-weight: 700; text-transform: uppercase; text-align: center; }
+thead th:first-child { text-align: left; color: #8a9bb0; }
+.c1 { color: #38bdf8; } .c2 { color: #4ade80; } .c3 { color: #f59e0b; }
+tbody tr { border-bottom: 1px solid #1e3048; }
+tbody td { padding: 10px 14px; font-size: 12px; color: #cbd5e1; vertical-align: middle; text-align: center; }
+tbody td:first-child { text-align: left; font-weight: 600; color: #94a3b8; font-size: 11px; text-transform: uppercase; }
+.b { display:inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+.bg{background:#14532d;color:#4ade80} .br{background:#450a0a;color:#f87171}
+.by{background:#451a03;color:#fbbf24} .bb{background:#0c2a4a;color:#38bdf8} .bgr{background:#1e293b;color:#94a3b8}
+.cards { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.card { background: #1a2d45; border-radius: 8px; padding: 12px 14px; }
+.card.n{border-top:3px solid #38bdf8} .card.h{border-top:3px solid #4ade80} .card.m{border-top:3px solid #f59e0b}
+.cl { font-size: 10px; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
+.card.n .cl{color:#38bdf8} .card.h .cl{color:#4ade80} .card.m .cl{color:#f59e0b}
+.ct { font-size: 11px; color: #94a3b8; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="title">Métodos de <span>JOIN</span>: Tabla Comparativa</div>
+<div class="subtitle">Optimización de Rendimiento en Bases de Datos — Idea 2: Plan de Ejecución</div>
+<table>
+  <thead><tr>
+    <th>Característica</th>
+    <th class="c1">Nested Loop</th>
+    <th class="c2">Hash Join</th>
+    <th class="c3">Merge Join</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>Necesita orden previo</td><td><span class="b bg">No</span></td><td><span class="b bg">No</span></td><td><span class="b br">Sí, ambas tablas</span></td></tr>
+    <tr><td>Necesita índice</td><td><span class="b by">Sí, tabla interna</span></td><td><span class="b bg">No</span></td><td><span class="b bb">Ayuda, no obliga</span></td></tr>
+    <tr><td>Uso de memoria</td><td><span class="b bg">Bajo</span></td><td><span class="b br">Alto</span></td><td><span class="b bg">Bajo</span></td></tr>
+    <tr><td>Mejor escenario</td><td>Tabla pequeña con índice en la otra</td><td>Tablas grandes sin orden ni índice</td><td>Tablas grandes ya ordenadas</td></tr>
+    <tr><td>Riesgo principal</td><td>Muchas iteraciones con tabla externa grande</td><td>Se va a disco si la memoria no alcanza</td><td>Costo extra si hay que ordenar primero</td></tr>
+    <tr><td>Consulta típica</td><td><span class="b bb">OLTP · Transaccional</span></td><td><span class="b by">OLAP · Reportes</span></td><td><span class="b bgr">Ambos · Con índices</span></td></tr>
+    <tr><td>Escalabilidad</td><td><span class="b br">Baja con datos grandes</span></td><td><span class="b by">Media</span></td><td><span class="b bg">Alta</span></td></tr>
+  </tbody>
+</table>
+<div class="cards">
+  <div class="card n"><div class="cl">Nested Loop</div><div class="ct">Como buscar cada nombre de una lista corta en una agenda — funciona bien si la lista es pequeña.</div></div>
+  <div class="card h"><div class="cl">Hash Join</div><div class="ct">Como organizar contactos por inicial en cajones — eficiente, pero requiere espacio para armarlos.</div></div>
+  <div class="card m"><div class="cl">Merge Join</div><div class="ct">Como fusionar dos listas ya ordenadas — muy rápido, pero solo si ambas listas ya están en orden.</div></div>
+</div>
+</body>
+</html>
